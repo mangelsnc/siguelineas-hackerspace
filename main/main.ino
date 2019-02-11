@@ -20,6 +20,7 @@ const int MAX_SPEED = 255;
 
 void setup() {
   initializeEngine();
+  initializeSensor();
   Serial.begin(9600);
 }
 
@@ -66,21 +67,21 @@ void loop() {
   delay(100);
 }
 
-bool isOutOfLine(sensorValue) {
+bool isOutOfLine(int sensorValue) {
   return sensorValue < OUTLINE_THRESHOLD;
 }
 
-bool isInsideLine(sensorValue) {
+bool isInsideLine(int sensorValue) {
   return sensorValue > INLINE_THRESHOLD;
 }
 
-void printEngineStatusMessage(sensorValue, speed) {
+void printEngineStatusMessage(int sensorValue, int speed) {
   String sensorMessage = "Sensor => ";
   sensorMessage = sensorMessage + sensorValue;
 
   String speedMessage = "Speed => ";
   speedMessage = speedMessage + speed;
 
-  Strint message = sensorMessage + " | " + speedMessage;
+  String message = sensorMessage + " | " + speedMessage;
   Serial.println(message);
 }
